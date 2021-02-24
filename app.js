@@ -48,6 +48,13 @@ app.get('/hall',(req,res) => {
   })
 })
 
+app.get('/movies',(req,res) => {
+  db.collection('movietype').find().toArray((err,result) => {
+    if(err) throw err;
+    res.send(result)
+  })
+})
+
 //connection with mongo serer
 MongoClient.connect(mongourl,(err,connection) => {
     if(err) console.log(err);
