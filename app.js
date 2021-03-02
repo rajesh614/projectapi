@@ -29,7 +29,7 @@ app.get('/city',(req,res) => {
   //movie details
 app.get('/hall/:id',(req,res) =>{
   var id = req.params.id
-  db.collection('Hall').find({name:id}).toArray((err,result) => {
+  db.collection('Hall').find({_id:id}).toArray((err,result) => {
     if(err) throw err;
     res.send(result)
   })
