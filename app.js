@@ -38,8 +38,16 @@ app.get('/hall/:id',(req,res) =>{
 //city Route
 app.get('/hall',(req,res) => {
   var condition ={};
+   //movie +city
+  if(req.query.movie && req.query.city){
+    condition={$and:[{"Movie.movie":req.query.movie},{city:req.query.city}]}
+  }
+   //movietype
+  else if(req.query.movie){
+    condition={"Movie.movie":req.query.movie}
+  }
   //city
-  if(req.query.city){
+  else if(req.query.city){
     condition={city:req.query.city}
   }
   db.collection('Hall').find(condition).toArray((err,result) => {
@@ -50,6 +58,22 @@ app.get('/hall',(req,res) => {
 
 app.get('/movies',(req,res) => {
   db.collection('movietype').find().toArray((err,result) => {
+    if(err) throw err;
+    res.send(result)
+  })
+})
+
+//placeorder
+app.post('/book',(req,res)=>{
+  db.collection('booking').insert(req.body,(err,result) => {
+    if(err) throw err;
+    res.send('data added');
+  })
+})
+
+//get all bookings
+app.get('/bookings',(req,res) => {
+  db.collection('booking').find({}).toArray((err,result) => {
     if(err) throw err;
     res.send(result)
   })
