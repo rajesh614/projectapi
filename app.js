@@ -36,10 +36,10 @@ app.get('/hall/:id',(req,res) =>{
 })
 
  //movies details
- app.get('/movie/:id',(req,res) =>{
+ app.get('/movies/:id',(req,res) =>{
   var id = req.params.id
 
-  db.collection('movies').find({_id:id}).toArray((err,result) => {
+  db.collection('movietype').find({_id:id}).toArray((err,result) => {
     if(err) throw err;
     res.send(result)
   })
