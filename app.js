@@ -26,7 +26,7 @@ app.get('/city',(req,res) => {
     })
   })
 
-  //movie details
+  //hall details
 app.get('/hall/:id',(req,res) =>{
   var id = req.params.id
   db.collection('Hall').find({_id:id}).toArray((err,result) => {
@@ -36,7 +36,7 @@ app.get('/hall/:id',(req,res) =>{
 })
 
  //movies details
- app.get('/movies/:id',(req,res) =>{
+ app.get('/movie/:id',(req,res) =>{
   var id = req.params.id
 
   db.collection('movietype').find({_id:id}).toArray((err,result) => {
