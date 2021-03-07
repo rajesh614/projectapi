@@ -35,6 +35,16 @@ app.get('/hall/:id',(req,res) =>{
   })
 })
 
+ //movies details
+ app.get('/movie/:id',(req,res) =>{
+  var id = req.params.id
+
+  db.collection('movies').find({_id:id}).toArray((err,result) => {
+    if(err) throw err;
+    res.send(result)
+  })
+})
+
 //city Route
 app.get('/hall',(req,res) => {
   var condition ={};
