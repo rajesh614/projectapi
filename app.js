@@ -66,7 +66,7 @@ app.get('/hall',(req,res) => {
   })
 })
 
-app.get('/movies',(req,res) => {
+app.get('/movie',(req,res) => {
   db.collection('movietype').find().toArray((err,result) => {
     if(err) throw err;
     res.send(result)
