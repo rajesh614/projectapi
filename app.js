@@ -74,16 +74,16 @@ app.get('/movie',(req,res) => {
 })
 
 //placeorder
-app.post('/book',(req,res)=>{
-  db.collection('booking').insert(req.body,(err,result) => {
+app.post('/placeorder',(req,res)=>{
+  db.collection('orders').insert(req.body,(err,result) => {
     if(err) throw err;
     res.send('data added');
   })
 })
 
 //get all bookings
-app.get('/bookings',(req,res) => {
-  db.collection('booking').find({}).toArray((err,result) => {
+app.get('/orders',(req,res) => {
+  db.collection('orders').find({}).toArray((err,result) => {
     if(err) throw err;
     res.send(result)
   })
