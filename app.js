@@ -36,7 +36,7 @@ app.get('/hall/:id',(req,res) =>{
 })
 
 app.get('/halldetail',(req,res) =>{
-  var hallinfo = req.query.hall
+  var hallinfo = req.query.name
   db.collection('Hall').find({name:hallinfo}).toArray((err,result) => {
     if(err) throw err;
     res.send(result)
