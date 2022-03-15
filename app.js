@@ -35,8 +35,8 @@ app.get('/hall/:id',(req,res) =>{
   })
 })
 
-app.get('/hall/:hall',(req,res) =>{
-  var hall = req.params.hall
+app.get('/hall/hall',(req,res) =>{
+  var hall = req.body.hall
   db.collection('Hall').find({name:hall}).toArray((err,result) => {
     if(err) throw err;
     res.send(result)
