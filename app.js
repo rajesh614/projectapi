@@ -35,6 +35,14 @@ app.get('/hall/:id',(req,res) =>{
   })
 })
 
+app.get('/hall/:hall',(req,res) =>{
+  var hall = req.params.hall
+  db.collection('Hall').find({name:hall}).toArray((err,result) => {
+    if(err) throw err;
+    res.send(result)
+  })
+})
+
  //movies details
  app.get('/movie/:id',(req,res) =>{
   var id = req.params.id
