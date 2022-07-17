@@ -5,7 +5,7 @@ const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongourl = "mongodb+srv://Rajesh:rajesh@123@cluster0.tlpyr.mongodb.net/PROJECT?retryWrites=true&w=majority";
+const mongourl = "mongodb+srv://Rajesh:Lr8SXuhnuRCq5jSi@cluster0.tlpyr.mongodb.net/PROJECT?retryWrites=true&w=majority";
 
 let db;
 
@@ -99,7 +99,11 @@ app.get('/orders',(req,res) => {
 
 //connection with mongo serer
 MongoClient.connect(mongourl,(err,connection) => {
-    if(err) console.log(err);
+    if(err) {
+      console.log(err.message);
+    } else {
+      console.log("MongoDB database connected successfully...")
+    };
     db = connection.db('PROJECT');
   
     app.listen(port,(err) => {
